@@ -204,22 +204,29 @@ todos os números
 Por exemplo, soma_ll([[[1,2,3],[4,5],11,4],9,8,4]) é 46
 '''
 def soma_ll(lista):
-    cont = 0
-    soma = 0
+
+    'verificando'
     if len(lista) == 0 or (len(lista) == 1 and lista[0] == 0 or lista[0] == []):
         return 0
-    elif len(lista) == 1:
-        if eh_lista(lista[0]) == False:
-            return lista[0]
+        
+    #colocando valor
+    valor = lista[0]
+    if len(lista) == 1:
+        if eh_lista(valor) == False:
+            return valor
         else:
-            return soma_ll(lista[0])
+            return soma_ll(valor)
+
+    total = 0
+    contador = 0
+
     for i in lista:
         if eh_lista(i):
-            cont = soma_ll(i)
+            contador = soma_ll(i)
         else:
-            cont = i
-        soma += cont
-    return soma
+            contador = i
+        total += contador
+    return total
 
 '''
 Implemente uma função anagramas 
@@ -234,9 +241,9 @@ def anagramas(palavra):
         return [palavra]
     else:
         lista = []
-        for w in anagramas(palavra[1:]):
-            for pos in range(len(w)+1):
-                lista.append(w[:pos]+palavra[0]+w[pos:])
+        for i in anagramas(palavra[1:]):
+            for j in range(len(i)+1):
+                lista.append(i[:j]+palavra[0]+i[j:])
         return lista
 
 '''
